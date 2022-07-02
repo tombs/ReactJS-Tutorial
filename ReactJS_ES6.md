@@ -291,3 +291,95 @@ apple
 banana
 orange
 ```
+
+# Destructing
+Destructuring is a method used to take out sections of data from an array or objects, which can be assigned to new variables.
+
+**Destructuring Arrays**
+Before
+```js
+const vehicles = ['mustang', 'f-150', 'expedition'];
+
+// old way
+const car = vehicles[0];
+const truck = vehicles[1];
+const suv = vehicles[2];
+```
+With destructuring
+```js
+const vehicles = ['mustang', 'f-150', 'expedition'];
+
+const [car, truck, suv] = vehicles;
+```
+
+
+> _NOTE: When destructuring arrays, the order that variables are declared is important._
+
+**Destructuring Objects**
+Before
+```js
+const vehicleOne = {
+  brand: 'Ford',
+  model: 'Mustang',
+  type: 'car',
+  year: 2021, 
+  color: 'red'
+}
+
+myVehicle(vehicleOne);
+
+// old way
+function myVehicle(vehicle) {
+  const message = 'My ' + vehicle.type + ' is a ' + vehicle.color + ' ' + vehicle.brand + ' ' + vehicle.model + '.';
+}
+```
+With destructuring
+```js
+const vehicleOne = {
+  brand: 'Ford',
+  model: 'Mustang',
+  type: 'car',
+  year: 2021, 
+  color: 'red'
+}
+
+myVehicle(vehicleOne);
+
+function myVehicle({type, color, brand, model}) {
+  const message = 'My ' + type + ' is a ' + color + ' ' + brand + ' ' + model + '.';
+}
+```
+
+# Spread Operator
+
+The JavaScript spread operator (`...`) allows us to quickly copy all or part of an existing array or object into another array or object.
+_Example_
+```js
+const numbersOne = [1, 2, 3];
+const numbersTwo = [4, 5, 6];
+const numbersCombined = [...numbersOne, ...numbersTwo];
+```
+The spread operator is often used in combination with destructuring.
+_Example_
+```js
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const [one, two, ...rest] = numbers;
+```
+We can use the spread operator with objects too:
+_Example_
+```js
+const myVehicle = {
+  brand: 'Ford',
+  model: 'Mustang',
+  color: 'red'
+}
+
+const updateMyVehicle = {
+  type: 'car',
+  year: 2021, 
+  color: 'yellow'
+}
+
+const myUpdatedVehicle = {...myVehicle, ...updateMyVehicle}
+```
