@@ -383,3 +383,62 @@ const updateMyVehicle = {
 
 const myUpdatedVehicle = {...myVehicle, ...updateMyVehicle}
 ```
+# Modules
+To help  maintain the code-base, JavaScript modules allow you to break up your code into separate files. Module variables can then use `export` to share variables, functions, objects, or classes with other JS files, or `import` to gain access to the same from other files.\
+**Export**
+Create a file, `person.js`, and use any of the code below
+_In line_
+```js
+export const name = "Jesse"
+export const age = 40
+```
+_At the bottom_
+```js
+const name = "Jesse"
+const age = 40
+
+export { name, age }
+```
+**Import**
+Create another file, `message.js`. Let's import the variables we created above
+```js
+import { name, age } from "./person.js";
+```
+
+**Default Export**
+You can only have one default export in a file. Overwrite the file `person.js` with the following code:
+
+```js
+const person = () => {
+  const name = "Jesse";
+  const age = 40;
+  return name + ' is ' + age + 'years old.';
+};
+
+export default person;
+```
+
+**Default Import**
+Overwrite `message.js` with the following code,importing the default export from the file `person.js` above:
+>NOTE: Notice the lack of curly braces. Importing in this way means you only import the default export variable or function
+
+```js
+import person from "./person.js";
+```
+# Ternary Operator
+The ternary operator is a simplified conditional operator like if / else.
+> SYNTAX: condition ? <expression if true> : <expression if false>
+
+**Example**
+_Before_
+```js
+if (authenticated) {
+  renderApp();
+} else {
+  renderLogin();
+}
+```
+_Ternary_
+```js
+authenticated ? renderApp() : renderLogin();
+```
